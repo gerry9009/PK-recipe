@@ -1,11 +1,19 @@
 // container megjeleníteni az elemeket
 const $CONTAINER = document.querySelector(".js-container");
 
+const $INPUT = document.querySelector(".js-input");
+const $FORM = document.querySelector(".js-form");
+
 const API_URL = "https://dummyjson.com/recipes?limit=100";
 
-fetch(API_URL)
-  .then((response) => response.json())
-  .then((data) => render(data.recipes));
+// ES13
+const RECIPES = await fetchData(API_URL);
+
+async function fetchData(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data.recipes;
+}
 
 function createStars(recipeRating) {
   let rating = Math.floor(recipeRating);
@@ -78,12 +86,26 @@ function createRecipeTemplate(recipe) {
 }
 
 function render(data) {
-  // tömbön végig kell iterálni
-  //console.log(data[1]);
-  //const recipes = createRecipeTemplate(data[1]);
-  //console.log(recipes);
   const recipes = data.map((recipe) => createRecipeTemplate(recipe)).join("");
 
   // $CONTAINER-be bele kell tenni az összes template-et
   $CONTAINER.innerHTML = recipes;
 }
+
+function inputEventHandler(e) {
+  const filterValue = e.target.value.toLowerCase();
+  // filterelni kell az elemek között
+  const filteredData = RECIPES.filter((recipe) => {
+    return (
+      recipe.name.toLowerCase().includes(filterValue) ||
+      recipe.ingredients.join(" ").toLowerCase().includes(filterValue)
+    );
+  });
+  // ki kell renderelni az új tömböt
+  render(filteredData);
+}
+
+$INPUT.addEventListener("input", inputEventHandler);
+$FORM.addEventListener("submit", (e) => e.preventDefault());
+
+render(RECIPES);

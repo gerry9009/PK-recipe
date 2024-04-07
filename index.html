@@ -19,8 +19,12 @@
         <a href="#home"><i class="fa-solid fa-bowl-food"></i></a>
         <h1>My Recipe</h1>
       </div>
-      <form class="header-form">
-        <input type="search" placeholder="Find a recipe or an ingredient" />
+      <form class="header-form js-form">
+        <input
+          class="js-input"
+          type="search"
+          placeholder="Find a recipe or an ingredient"
+        />
         <button type="submit">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -34,53 +38,12 @@
     </header>
     <main>
       <section class="container js-container">
-        <div class="recipe">
-          <div class="recipe-top">
-            <img
-              src="https://cdn.dummyjson.com/recipe-images/1.webp"
-              alt="pizza"
-            />
-          </div>
-          <div class="recipe-bottom">
-            <h2>Pizza</h2>
-            <div class="recipe-rating flex-around-center">
-              <div>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star-half-stroke"></i>
-                <i class="fa-regular fa-star"></i>
-              </div>
-              <p>4.9</p>
-            </div>
-            <div class="recipe-data flex-around-center">
-              <i class="fa-regular fa-clock"></i>
-              <p>Prep: <span>15 min</span></p>
-              <p>Cooking: <span>20 min</span></p>
-            </div>
-            <div class="recipe-text">
-              <h3>Ingredients:</h3>
-              <div class="recipe-grid">
-                <p>Pizza dough</p>
-                <p>Pizza dough</p>
-                <p>Pizza dough</p>
-                <p>Pizza dough</p>
-                <p>Pizza dough</p>
-                <p>Pizza dough</p>
-              </div>
-            </div>
-            <div class="recipe-text">
-              <h3>Instructions:</h3>
-              <p>Preheat the oven to 475°F (245°C).</p>
-              <p>Preheat the oven to 475°F (245°C).</p>
-            </div>
-          </div>
-        </div>
+        <h2>Waiting...</h2>
       </section>
     </main>
     <footer>
       <p>2024</p>
     </footer>
-    <script src="./main.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
